@@ -12,8 +12,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
-
 import com.tenda.tdrecycler.adapter.BaseViewAdapter;
 import com.tenda.tdrecycler.adapter.BindingViewHolder;
 import com.tenda.tdrecycler.base.BaseLayout;
@@ -24,7 +22,6 @@ import com.tenda.tdrecycler.base.LoaderStateInterface;
 import com.tenda.tdrecycler.impl.LoaderView;
 import com.tenda.tdrecycler.impl.RefreshView;
 import com.tenda.tdrecycler.util.Logger;
-
 import java.lang.reflect.Constructor;
 
 /**
