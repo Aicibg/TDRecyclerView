@@ -11,7 +11,7 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".BindingActivity">
+        <activity android:name="com.tenda.tdrecyclerview.BindingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

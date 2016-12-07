@@ -37,6 +37,7 @@ public class NRecyclerView extends BaseLayout {
 
     private RecyclerView.LayoutManager layoutManager;
     private InnerAdapter adapter;
+    private InnerBindingAdapter mBindingAdapter;
     private final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
 
     public NRecyclerView(Context context, AttributeSet attrs) {
@@ -185,8 +186,11 @@ public class NRecyclerView extends BaseLayout {
 
                 Logger.getLogger().d("orientation = " + orientation);
                 IsFirstItem = getFirstVisibleItem() == 0 ? true : false;
-                IsLastItem = (getLastVisibleItem() + 1 == adapter.getItemCount()) ? true : false;
-
+                if (adapter==null){
+                    IsLastItem = (getLastVisibleItem() + 1 == mBindingAdapter.getItemCount()) ? true : false;
+                }else {
+                    IsLastItem = (getLastVisibleItem() + 1 == adapter.getItemCount()) ? true : false;
+                }
                 //Solve the isNestConfilct led to a small bug.
                 isNestConfilct = false;
 
@@ -392,7 +396,8 @@ public class NRecyclerView extends BaseLayout {
     }
 
     public void setAdapter(BaseViewAdapter adapter){
-        ((RecyclerView) contentView).setAdapter(new InnerBindingAdapter(getContext(),adapter));
+        mBindingAdapter=new InnerBindingAdapter(getContext(),adapter);
+        ((RecyclerView) contentView).setAdapter(mBindingAdapter);
         adapter.registerAdapterDataObserver(mDataObserver);
         mDataObserver.onChanged();
     }
@@ -453,36 +458,51 @@ public class NRecyclerView extends BaseLayout {
                 IsFirstItem = getFirstVisibleItem() == 0 ? true : false;
                 IsLastItem = (getLastVisibleItem() + 1 == adapter.getItemCount()) ? true : false;
             }
+            if (mBindingAdapter!=null){
+                mBindingAdapter.notifyDataSetChanged();
+                IsFirstItem = getFirstVisibleItem() == 0 ? true : false;
+                IsLastItem = (getLastVisibleItem() + 1 == mBindingAdapter.getItemCount()) ? true : false;
+            }
         }
 
         @Override
         public void onItemRangeChanged(int positionStart, int itemCount) {
             if (adapter != null)
                 adapter.notifyItemRangeChanged(positionStart, itemCount);
+            if (mBindingAdapter != null)
+                mBindingAdapter.notifyItemRangeChanged(positionStart, itemCount);
         }
 
         @Override
         public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
             if (adapter != null)
                 adapter.notifyItemRangeChanged(positionStart, itemCount, payload);
+            if (mBindingAdapter != null)
+                mBindingAdapter.notifyItemRangeChanged(positionStart, itemCount, payload);
         }
 
         @Override
         public void onItemRangeInserted(int positionStart, int itemCount) {
             if (adapter != null)
                 adapter.notifyItemRangeInserted(positionStart, itemCount);
+            if (mBindingAdapter != null)
+                mBindingAdapter.notifyItemRangeInserted(positionStart, itemCount);
         }
 
         @Override
         public void onItemRangeRemoved(int positionStart, int itemCount) {
             if (adapter != null)
                 adapter.notifyItemRangeRemoved(positionStart, itemCount);
+            if (mBindingAdapter != null)
+                mBindingAdapter.notifyItemRangeRemoved(positionStart, itemCount);
         }
 
         @Override
         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
             if (adapter != null)
                 adapter.notifyItemMoved(fromPosition, toPosition);
+            if (mBindingAdapter != null)
+                mBindingAdapter.notifyItemMoved(fromPosition, toPosition);
         }
     }
 
@@ -684,6 +704,11 @@ public class NRecyclerView extends BaseLayout {
                     }
                 }
                 return;
+            }
+            if (getItemViewType(getItemCount()-1)==TYPE_BOTTOM){
+                if (position==getItemCount()-1)
+                    return;
+                adapter.onBindViewHolder(holder, position);
             }
             adapter.onBindViewHolder(holder, position);
         }

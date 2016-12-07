@@ -1,5 +1,20 @@
 package com.tenda.tdrecycler.base;
 
+import android.databinding.DataBindingUtil;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.tenda.tdrecycler.adapter.BindingViewHolder;
+import com.tenda.tdrecycler.adapter.SingleTypeAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 描述：
  * 作者：Nipuream

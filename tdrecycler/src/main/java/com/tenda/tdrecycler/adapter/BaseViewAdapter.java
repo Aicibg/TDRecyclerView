@@ -50,7 +50,7 @@ public abstract class  BaseViewAdapter<T> extends RecyclerView.Adapter<BindingVi
 
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
-        final Object item = mCollection.get(position);
+        Object item = mCollection.get(position);
         holder.getBinding().setVariable(BR.item, item);
         holder.getBinding().setVariable(BR.presenter, getPresenter());
         holder.getBinding().executePendingBindings();
