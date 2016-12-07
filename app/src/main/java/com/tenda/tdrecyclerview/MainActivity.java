@@ -9,10 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.tenda.tdrecycler.NRecyclerView;
 import com.tenda.tdrecycler.base.BaseLayout;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="adapter"
+            type="android.support.v7.widget.RecyclerView.Adapter"/>
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.RecyclerView.LayoutManager"/>
+    </data>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:bind="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.tenda.tdrecycler.NRecyclerView
+        android:id="@+id/bind_recycler"
+        bind:adapter="@{adapter}"
+        bind:layoutManager="@{layoutManager}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.tenda.tdrecycler.NRecyclerView>
+
+</LinearLayout>
+</layout>
