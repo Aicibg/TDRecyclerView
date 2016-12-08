@@ -676,9 +676,14 @@ public abstract class BaseLayout extends LinearLayout
     public void pullEvent(float moveY){
 
         int value = (int) Math.abs(moveY);
+
         Logger.getLogger().d("state = "+state);
 
         if(moveY > 0){
+            //弹性滑动 限定refreshview滑动的距离
+            if (value>refreshView.getMeasuredHeight()){
+                value= (int) (refreshView.getMeasuredHeight()/resistance);
+            }
             if(state == CONTENT_VIEW_STATE.PULL)
             {
                 if(isPullRefreshEnable)
@@ -709,7 +714,10 @@ public abstract class BaseLayout extends LinearLayout
                 }
             }
         }else if(moveY < 0){
-
+            //弹性滑动 限定refreshview滑动的距离
+            if (value>loaderView.getMeasuredHeight()){
+                value= (int) (loaderView.getMeasuredHeight()/resistance);
+            }
             if(state == CONTENT_VIEW_STATE.PUSH){
 
                 if(isPullLoadEnable)
@@ -729,7 +737,7 @@ public abstract class BaseLayout extends LinearLayout
                     if(overScroll){
                         if(loaderView !=null)
                             loaderView.setVisibility(View.INVISIBLE);
-                        scrollTo(0,(int)(value*overResistance));
+//                        scrollTo(0,(int)(value*overResistance));
                     }
                 }
             }
