@@ -82,7 +82,7 @@ public class RefreshView extends BaseRefreshView {
         headerTv = (TextView) headerView.findViewById(R.id.header_tv);
         progressBar = (ProgressBar) headerView.findViewById(R.id.refresh_view_progressbar);
         refreshIv = (ImageView)headerView.findViewById(R.id.refresh_view_iv);
-        refreshIv.setImageResource(R.mipmap.tableview_pull_refresh_arrow_down);
+        refreshIv.setImageResource(R.mipmap.ic_pulltorefresh_arrow);
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         this.addView(headerView,lp);

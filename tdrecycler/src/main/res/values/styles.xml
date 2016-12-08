@@ -16,4 +16,12 @@
             <item name="android:maxHeight">35dip</item>
         </style>
 
+    <style name="style_refresh">
+        <item name="android:indeterminateDrawable">@drawable/view_refresh</item>
+        <item name="android:minWidth">40dip</item>
+        <item name="android:maxWidth">40dip</item>
+        <item name="android:minHeight">40dip</item>
+        <item name="android:maxHeight">40dip</item>
+    </style>
+
 </resources>

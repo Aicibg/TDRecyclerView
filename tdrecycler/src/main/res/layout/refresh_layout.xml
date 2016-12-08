@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="#ffffff"
+              android:background="#00ffffff"
               android:orientation="vertical">
 
     <LinearLayout
-        android:paddingTop="8dp"
+        android:paddingTop="13dp"
+        android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
@@ -16,19 +17,19 @@
             android:id="@+id/refresh_view_iv"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@mipmap/tableview_pull_refresh_arrow_down"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/ic_pulltorefresh_arrow"
             />
 
 
         <ProgressBar
             android:id="@+id/refresh_view_progressbar"
-            style="@style/style_progressbar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            style="@style/style_refresh"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:indeterminate="false"
             android:indeterminateDuration="700"
-            android:padding="5dp"
-            android:visibility="gone"
+            android:visibility="visible"
             />
 
         <TextView
@@ -36,20 +37,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
             android:text="下拉刷新"
             android:textSize="16sp"
             />
 
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="8dp"
-        android:text="刷新时间：19:23"
-        android:textSize="12sp"/>
 
 </LinearLayout>

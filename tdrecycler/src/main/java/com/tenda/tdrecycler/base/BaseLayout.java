@@ -681,8 +681,8 @@ public abstract class BaseLayout extends LinearLayout
 
         if(moveY > 0){
             //弹性滑动 限定refreshview滑动的距离
-            if (value>refreshView.getMeasuredHeight()){
-                value= (int) (refreshView.getMeasuredHeight()/resistance);
+            if (value>2*refreshView.getMeasuredHeight()){
+                value= (int) (2*refreshView.getMeasuredHeight()/resistance);
             }
             if(state == CONTENT_VIEW_STATE.PULL)
             {
@@ -690,7 +690,12 @@ public abstract class BaseLayout extends LinearLayout
                 {
                     if(!isRefreshing){
                         if(refreshView != null){
-
+                            //设置refreshview的bottomMargin
+//                            if (value>refreshView.getMeasuredHeight()){
+//                                LayoutParams params= (LayoutParams) refreshView.getLayoutParams();
+//                                params.bottomMargin=(value-refreshView.getMeasuredHeight())/2;
+//                                refreshView.setLayoutParams(params);
+//                            }
                             refreshView.setVisibility(View.VISIBLE);
                             scrollTo(0, -(int)(value*resistance));
                             refreshView.setPullDistance((int)(value*resistance),refreshView.getHeight());
@@ -714,7 +719,7 @@ public abstract class BaseLayout extends LinearLayout
                 }
             }
         }else if(moveY < 0){
-            //弹性滑动 限定refreshview滑动的距离
+            //弹性滑动 限定loaderView滑动的距离
             if (value>loaderView.getMeasuredHeight()){
                 value= (int) (loaderView.getMeasuredHeight()/resistance);
             }
