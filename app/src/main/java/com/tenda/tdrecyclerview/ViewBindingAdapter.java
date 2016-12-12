@@ -3,6 +3,7 @@ package com.tenda.tdrecyclerview;
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 
+import com.allen.library.SuperTextView;
 import com.tenda.tdrecycler.NRecyclerView;
 import com.tenda.tdrecycler.adapter.BaseViewAdapter;
 
@@ -27,6 +28,16 @@ public class ViewBindingAdapter {
     @BindingAdapter("adapter")
     public static void setAdapter(NRecyclerView view, BaseViewAdapter adapter) {
         view.setAdapter(adapter);
+    }
+
+    @BindingAdapter("sLeftBottomTextString")
+    public static void setLeftBottomTextString(SuperTextView view, String str) {
+        view.setLeftBottomString(str);
+    }
+
+    @BindingAdapter("sLeftTopTextString")
+    public static void setLeftTopTextString(SuperTextView view, String str) {
+        view.setLeftTopString(str);
     }
 
 
